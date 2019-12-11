@@ -1,10 +1,9 @@
 # WebPack Sourcemap
 
+Run using `npm run build` and then `node repro`.
+
 ## To-Do
 
-### Set up WebPack compilation from JSX to JS
-
-https://www.valentinog.com/blog/babel
 
 ### Set `devtool` to `sourcemap` to use the same sourcemap as CRA
 
