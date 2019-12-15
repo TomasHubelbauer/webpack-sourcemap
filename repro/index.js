@@ -35,10 +35,16 @@ void async function () {
       const node = nodes.shift();
       nodes.unshift(...node.getChildren());
       if (node.kind === ts.SyntaxKind.StringLiteral) {
-        const map = sourceMap.originalPositionFor({ line: 1, column: node.pos });
+        const { line, character } = sourceFile.getLineAndCharacterOfPosition(node.pos);
+        const map = sourceMap.originalPositionFor({ line: line + 1, column: character });
         console.log(JSON.stringify(node.text));
-        console.log(`  source: src/${map.source}:${map.line}:${map.column + 1}`);
-        console.log(`  target: ${relative(process.cwd(), file.path)}:1:${node.pos + 1}`);
+        let source = map.source || 'src/?';
+        if (source.startsWith('webpack:///src/')) {
+          source = source.slice('webpack:///src/'.length);
+        }
+
+        console.log(`  source: src/${source}:${map.line}:${map.column + 1}`);
+        console.log(`  target: ${relative(process.cwd(), file.path)}:${line + 1}:${character + 1}`);
       }
     } while (nodes.length > 0);
   }

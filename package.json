@@ -1,5 +1,7 @@
 {
   "scripts": {
+    "start": "npm run build",
+    "poststart": "node repro",
     "build": "webpack --mode production"
   },
   "devDependencies": {
