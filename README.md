@@ -1,9 +1,10 @@
 # WebPack Sourcemap
 
-Run using `npm run build` and then `node repro`.
+Run using `npm run build` and then `node repro`. This turned out to be a Babel
+issue.
 
 ## To-Do
 
-### Help resolve the issue
+### Help resolve the Babel sourcemap issue
 
-https://github.com/webpack/webpack/issues/10125
+https://github.com/babel/babel/issues/10869
